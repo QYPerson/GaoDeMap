@@ -1,0 +1,24 @@
+PODS:
+  - AMap2DMap (3.3.0)
+  - AMapLocation (1.1.1)
+  - AMapSearch (3.2.0)
+  - SDCycleScrollView (1.61):
+    - SDWebImage (~> 3.7)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+
+DEPENDENCIES:
+  - AMap2DMap
+  - AMapLocation
+  - AMapSearch
+  - SDCycleScrollView
+
+SPEC CHECKSUMS:
+  AMap2DMap: e53461cdc345375e514579db17dbd721ff9ed9eb
+  AMapLocation: fc0245146ef90811f9590d428e9035a2a64f4526
+  AMapSearch: a885f0702578a441a22cb66fa74f8918c6d19e6f
+  SDCycleScrollView: a002d85b30cfa9d0ac74069cd3973ca19ff4f22f
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+
+COCOAPODS: 0.39.0
