@@ -53,6 +53,9 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="ModifyAdrBtnClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="C7e-qj-IZj"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

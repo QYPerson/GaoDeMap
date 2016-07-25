@@ -9,8 +9,8 @@
 
 #import "AppDelegate.h"
 #import <MAMapKit/MAMapKit.h>
-#import "SendRangeNavVC.h"
-#import "MapVIewVC.h"
+#import "MainNavVC.h"
+#import "SendRangeVC.h"
 @interface AppDelegate ()
 
 @end
@@ -22,7 +22,7 @@
     //4.配置key
     [MAMapServices sharedServices].apiKey = @"5e6235b9fae719747e2f4001c01bfdea";
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[SendRangeNavVC alloc] initWithRootViewController:    [[MapVIewVC alloc ] init]];
+    self.window.rootViewController = [[MainNavVC alloc] initWithRootViewController:    [[SendRangeVC alloc ] init]];
     [self.window makeKeyAndVisible];
     return YES;
 }

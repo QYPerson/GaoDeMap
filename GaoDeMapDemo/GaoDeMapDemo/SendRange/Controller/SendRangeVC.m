@@ -15,14 +15,14 @@
 //派送半径 根据实际派送范围自行修改 (单位：米)
 #define  RADIUS 10000.0
 
-#import "MapVIewVC.h"
+#import "SendRangeVC.h"
 #import <MAMapKit/MAMapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "CurrentLocationView.h"
 #import "SDCycleScrollView.h"
 
 //遵循 MAMapViewDelegate AMapLocationManagerDelegate 代理
-@interface MapVIewVC ()<MAMapViewDelegate,AMapLocationManagerDelegate,SDCycleScrollViewDelegate>
+@interface SendRangeVC ()<MAMapViewDelegate,AMapLocationManagerDelegate,SDCycleScrollViewDelegate>
 //点标注数据
 @property (nonatomic,strong) MAPointAnnotation *pointAnnotation;
 //商店坐标
@@ -40,7 +40,7 @@
 
 @end
 
-@implementation MapVIewVC
+@implementation SendRangeVC
 #pragma mark - lazyLoad
 //懒加载
 -(CLGeocoder *)geocoder{
@@ -139,6 +139,12 @@
     CurrentLocationView *locationView = [[[NSBundle mainBundle] loadNibNamed:@"CurrentLocationView" owner:nil options:nil] lastObject];
     locationView.frame  = CGRectMake(0, 60, SCREEN_WIDTH, 80);
     self.locationView = locationView;
+    __weak typeof(self) weakSelf = self;
+    locationView.ModifyAdrBtnClick = ^{
+    
+//        weakSelf.navigationController pushViewController:<#(nonnull UIViewController *)#> animated:<#(BOOL)#>
+        
+    };
     [self.view addSubview:locationView];
 
 }

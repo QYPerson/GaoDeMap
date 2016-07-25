@@ -6,8 +6,8 @@
 //  Copyright © 2016年 zibin. All rights reserved.
 //
 
-#import "SendRangeNavVC.h"
+#import "MainNavVC.h"
 
-@implementation SendRangeNavVC
+@implementation MainNavVC
 
 @end

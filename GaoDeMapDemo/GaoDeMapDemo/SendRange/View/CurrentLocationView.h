@@ -10,6 +10,9 @@
 
 //自定义派送范围视图
 @interface CurrentLocationView : UIView
+//用户位置
 @property (weak, nonatomic) IBOutlet UILabel *userLocation;
+//点击修改位置按钮调用
+@property (nonatomic,copy) void (^ModifyAdrBtnClick)();
 
 @end

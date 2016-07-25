@@ -11,12 +11,13 @@
 		C85B0B241D41BCFA00ECA594 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C85B0B231D41BCFA00ECA594 /* Assets.xcassets */; };
 		C85B0B321D41BCFA00ECA594 /* GaoDeMapDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C85B0B311D41BCFA00ECA594 /* GaoDeMapDemoTests.m */; };
 		C85B0B3D1D41BCFA00ECA594 /* GaoDeMapDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C85B0B3C1D41BCFA00ECA594 /* GaoDeMapDemoUITests.m */; };
-		C88DC7EF1D45DE5800AE7562 /* MapVIewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C88DC7E21D45DE5800AE7562 /* MapVIewVC.m */; };
-		C88DC7F01D45DE5800AE7562 /* SendRangeNavVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C88DC7E41D45DE5800AE7562 /* SendRangeNavVC.m */; };
+		C878C77D1D46644500DF946D /* SendRangeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C878C7761D46644500DF946D /* SendRangeVC.m */; };
+		C878C77E1D46644500DF946D /* CurrentLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C878C77A1D46644500DF946D /* CurrentLocationView.m */; };
+		C878C77F1D46644500DF946D /* CurrentLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C878C77B1D46644500DF946D /* CurrentLocationView.xib */; };
+		C878C7821D4664CA00DF946D /* MainNavVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C878C7811D4664CA00DF946D /* MainNavVC.m */; };
+		C878C7891D4665DD00DF946D /* ChooseAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C878C7881D4665DD00DF946D /* ChooseAddressVC.m */; };
 		C88DC7F11D45DE5800AE7562 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C88DC7E81D45DE5800AE7562 /* AppDelegate.m */; };
 		C88DC7F31D45DE5800AE7562 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C88DC7EA1D45DE5800AE7562 /* main.m */; };
-		C88DC7F41D45DE5800AE7562 /* CurrentLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C88DC7ED1D45DE5800AE7562 /* CurrentLocationView.m */; };
-		C88DC7F51D45DE5800AE7562 /* CurrentLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C88DC7EE1D45DE5800AE7562 /* CurrentLocationView.xib */; };
 		C88DC7F71D45DEF500AE7562 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C88DC7F61D45DEF500AE7562 /* Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -48,17 +49,19 @@
 		C85B0B381D41BCFA00ECA594 /* GaoDeMapDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GaoDeMapDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85B0B3C1D41BCFA00ECA594 /* GaoDeMapDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GaoDeMapDemoUITests.m; sourceTree = "<group>"; };
 		C85B0B3E1D41BCFA00ECA594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C878C7751D46644500DF946D /* SendRangeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendRangeVC.h; sourceTree = "<group>"; };
+		C878C7761D46644500DF946D /* SendRangeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendRangeVC.m; sourceTree = "<group>"; };
+		C878C7791D46644500DF946D /* CurrentLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentLocationView.h; sourceTree = "<group>"; };
+		C878C77A1D46644500DF946D /* CurrentLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentLocationView.m; sourceTree = "<group>"; };
+		C878C77B1D46644500DF946D /* CurrentLocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrentLocationView.xib; sourceTree = "<group>"; };
+		C878C7801D4664CA00DF946D /* MainNavVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavVC.h; sourceTree = "<group>"; };
+		C878C7811D4664CA00DF946D /* MainNavVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavVC.m; sourceTree = "<group>"; };
+		C878C7871D4665DD00DF946D /* ChooseAddressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAddressVC.h; sourceTree = "<group>"; };
+		C878C7881D4665DD00DF946D /* ChooseAddressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAddressVC.m; sourceTree = "<group>"; };
 		C88DC7DF1D45DE5800AE7562 /* Catagory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Catagory.h; sourceTree = "<group>"; };
-		C88DC7E11D45DE5800AE7562 /* MapVIewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapVIewVC.h; sourceTree = "<group>"; };
-		C88DC7E21D45DE5800AE7562 /* MapVIewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapVIewVC.m; sourceTree = "<group>"; };
-		C88DC7E31D45DE5800AE7562 /* SendRangeNavVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendRangeNavVC.h; sourceTree = "<group>"; };
-		C88DC7E41D45DE5800AE7562 /* SendRangeNavVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendRangeNavVC.m; sourceTree = "<group>"; };
 		C88DC7E71D45DE5800AE7562 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C88DC7E81D45DE5800AE7562 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C88DC7EA1D45DE5800AE7562 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Others/main.m; sourceTree = "<group>"; };
-		C88DC7EC1D45DE5800AE7562 /* CurrentLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentLocationView.h; sourceTree = "<group>"; };
-		C88DC7ED1D45DE5800AE7562 /* CurrentLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentLocationView.m; sourceTree = "<group>"; };
-		C88DC7EE1D45DE5800AE7562 /* CurrentLocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CurrentLocationView.xib; sourceTree = "<group>"; };
 		C88DC7F61D45DEF500AE7562 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D64D02FC0500B27D810ACEAF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,9 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				C88DC7E61D45DE5800AE7562 /* Others */,
-				C88DC7E51D45DE5800AE7562 /* Model */,
-				C88DC7EB1D45DE5800AE7562 /* View */,
-				C88DC7E01D45DE5800AE7562 /* Controller */,
+				C878C7711D46644500DF946D /* SendRange */,
+				C878C7831D46657C00DF946D /* ChooseAddress */,
 				C88DC7DE1D45DE5800AE7562 /* Catagory */,
 				C85B0B171D41BCFA00ECA594 /* Supporting Files */,
 			);
@@ -160,6 +162,75 @@
 			path = GaoDeMapDemoUITests;
 			sourceTree = "<group>";
 		};
+		C878C7711D46644500DF946D /* SendRange */ = {
+			isa = PBXGroup;
+			children = (
+				C878C7721D46644500DF946D /* Controller */,
+				C878C7771D46644500DF946D /* Model */,
+				C878C7781D46644500DF946D /* View */,
+			);
+			path = SendRange;
+			sourceTree = "<group>";
+		};
+		C878C7721D46644500DF946D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C878C7751D46644500DF946D /* SendRangeVC.h */,
+				C878C7761D46644500DF946D /* SendRangeVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C878C7771D46644500DF946D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C878C7781D46644500DF946D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C878C7791D46644500DF946D /* CurrentLocationView.h */,
+				C878C77A1D46644500DF946D /* CurrentLocationView.m */,
+				C878C77B1D46644500DF946D /* CurrentLocationView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C878C7831D46657C00DF946D /* ChooseAddress */ = {
+			isa = PBXGroup;
+			children = (
+				C878C7841D46657C00DF946D /* Controller */,
+				C878C7851D46657C00DF946D /* Model */,
+				C878C7861D46657C00DF946D /* View */,
+			);
+			path = ChooseAddress;
+			sourceTree = "<group>";
+		};
+		C878C7841D46657C00DF946D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C878C7871D4665DD00DF946D /* ChooseAddressVC.h */,
+				C878C7881D4665DD00DF946D /* ChooseAddressVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C878C7851D46657C00DF946D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C878C7861D46657C00DF946D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C88DC7DE1D45DE5800AE7562 /* Catagory */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,41 +239,15 @@
 			path = Catagory;
 			sourceTree = "<group>";
 		};
-		C88DC7E01D45DE5800AE7562 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				C88DC7E11D45DE5800AE7562 /* MapVIewVC.h */,
-				C88DC7E21D45DE5800AE7562 /* MapVIewVC.m */,
-				C88DC7E31D45DE5800AE7562 /* SendRangeNavVC.h */,
-				C88DC7E41D45DE5800AE7562 /* SendRangeNavVC.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		C88DC7E51D45DE5800AE7562 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		C88DC7E61D45DE5800AE7562 /* Others */ = {
 			isa = PBXGroup;
 			children = (
 				C88DC7E71D45DE5800AE7562 /* AppDelegate.h */,
 				C88DC7E81D45DE5800AE7562 /* AppDelegate.m */,
+				C878C7801D4664CA00DF946D /* MainNavVC.h */,
+				C878C7811D4664CA00DF946D /* MainNavVC.m */,
 			);
 			path = Others;
-			sourceTree = "<group>";
-		};
-		C88DC7EB1D45DE5800AE7562 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C88DC7EC1D45DE5800AE7562 /* CurrentLocationView.h */,
-				C88DC7ED1D45DE5800AE7562 /* CurrentLocationView.m */,
-				C88DC7EE1D45DE5800AE7562 /* CurrentLocationView.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		CFEC34EF53CDDCB2353A01F3 /* Pods */ = {
@@ -329,8 +374,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C85B0B241D41BCFA00ECA594 /* Assets.xcassets in Resources */,
-				C88DC7F51D45DE5800AE7562 /* CurrentLocationView.xib in Resources */,
 				C88DC7F71D45DEF500AE7562 /* Info.plist in Resources */,
+				C878C77F1D46644500DF946D /* CurrentLocationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,11 +448,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C878C77D1D46644500DF946D /* SendRangeVC.m in Sources */,
 				C88DC7F31D45DE5800AE7562 /* main.m in Sources */,
+				C878C7891D4665DD00DF946D /* ChooseAddressVC.m in Sources */,
+				C878C7821D4664CA00DF946D /* MainNavVC.m in Sources */,
+				C878C77E1D46644500DF946D /* CurrentLocationView.m in Sources */,
 				C88DC7F11D45DE5800AE7562 /* AppDelegate.m in Sources */,
-				C88DC7EF1D45DE5800AE7562 /* MapVIewVC.m in Sources */,
-				C88DC7F41D45DE5800AE7562 /* CurrentLocationView.m in Sources */,
-				C88DC7F01D45DE5800AE7562 /* SendRangeNavVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
