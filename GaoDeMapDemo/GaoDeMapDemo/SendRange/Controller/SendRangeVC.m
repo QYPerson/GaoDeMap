@@ -38,8 +38,6 @@
 //轮播图
 @property (nonatomic,weak) SDCycleScrollView *cycleScrollView;
 
-
-
 @end
 
 @implementation SendRangeVC
@@ -81,7 +79,7 @@
     [self configLocationManager];
     //用户位置Label
     [self addUserLocationLabel];
-    //根据商店经纬度添加圆
+    //根据商店经纬度添加覆盖物
     [self addCircleReionForCoordinate:self.shopLocation];
     
 }
@@ -93,13 +91,6 @@
     self.navigationController.toolbarHidden         = YES;
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    //开始定位
-//    [self getCurrentLocation];
-
-}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -161,34 +152,10 @@
     
     [self.locationManager setPausesLocationUpdatesAutomatically:NO];
     
-//    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
-    
     [self.locationManager startUpdatingLocation];
 
 }
 #pragma mark - Add Regions
-//- (void)getCurrentLocation
-//{
-//    __weak typeof(self) weakSelf = self;
-//    [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            //回调或者说是通知主线程刷新，
-//            //反地理编码
-//            [weakSelf.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-//                if (placemarks.count == 0 || error) {
-//                     NSLog(@"没有定位到");
-//                }else{//编码成功
-//                CLPlacemark *placemark =  [placemarks firstObject];
-//                    NSLog(@"~~~~~%@",placemark.addressDictionary);
-//
-//                NSString *userLocation =  [placemark.name substringFromIndex:2];
-//                weakSelf.locationView.userLocation.text =[NSString stringWithFormat:@"%@" ,userLocation];
-//                }
-//            }];
-//        });
-//    }];
-//    
-//}
 //根据商店经纬度添加圆
 - (void)addCircleReionForCoordinate:(CLLocationCoordinate2D)coordinate
 {
@@ -264,42 +231,9 @@
     [self.view addSubview:cycleScrollView];
     
 }
-#pragma mark - AMapLocationManagerDelegate 
-//地理围栏的相关回调
-//
-//- (void)amapLocationManager:(AMapLocationManager *)manager didStartMonitoringForRegion:(AMapLocationRegion *)region
-//{
-//    NSLog(@"didStartMonitoringForRegion:%@", region);
-//}
-//
-//- (void)amapLocationManager:(AMapLocationManager *)manager monitoringDidFailForRegion:(AMapLocationRegion *)region withError:(NSError *)error
-//{
-//    NSLog(@"monitoringDidFailForRegion:%@", error.localizedDescription);
-//}
-//
-//- (void)amapLocationManager:(AMapLocationManager *)manager didEnterRegion:(AMapLocationRegion *)region
-//{
-//    NSLog(@"didEnterRegion:%@", region);
-//}
-//
-//- (void)amapLocationManager:(AMapLocationManager *)manager didExitRegion:(AMapLocationRegion *)region
-//{
-//    NSLog(@"didExitRegion:%@", region);
-//}
-//
-//- (void)amapLocationManager:(AMapLocationManager *)manager didDetermineState:(AMapLocationRegionState)state forRegion:(AMapLocationRegion *)region
-//{
-//    NSLog(@"didDetermineState:%@; state:%ld", region, (long)state);
-//}
 
-#pragma mark - SDCycleScrollViewDelegate
-/** 点击图片回调 */
-- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-    [self.cycleScrollView removeFromSuperview];
-}
-
-
-
+#pragma mark - AMapLocationManagerDelegate
+//定位成功 停止定位
 - (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location
 {
     //定位结果
@@ -316,11 +250,16 @@
     }];
 
 }
-
+//定位失败
 - (void)amapLocationManager:(AMapLocationManager *)manager didFailWithError:(NSError *)error
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"定位失败" message:@"请打开定位，确定当前位置是否在派送范围" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
     [alertView show];
+}
+#pragma mark - SDCycleScrollViewDelegate
+//点击轮播图
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    [self.cycleScrollView removeFromSuperview];
 }
 
 
