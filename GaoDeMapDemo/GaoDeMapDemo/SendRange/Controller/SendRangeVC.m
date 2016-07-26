@@ -20,6 +20,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CurrentLocationView.h"
 #import "SDCycleScrollView.h"
+#import "Catagory.h"
+#import <AMapLocationKit/AMapLocationKit.h>
 
 //遵循 MAMapViewDelegate AMapLocationManagerDelegate 代理
 @interface SendRangeVC ()<MAMapViewDelegate,AMapLocationManagerDelegate,SDCycleScrollViewDelegate>
@@ -93,7 +95,8 @@
 {
     [super viewDidAppear:animated];
     //获得当前位置
-    [self getCurrentLocation];
+//    [self getCurrentLocation];
+    [self.locationManager startUpdatingLocation];
     //根据商店经纬度添加圆
     [self addCircleReionForCoordinate:self.shopLocation];
 }
@@ -158,7 +161,7 @@
     
     [self.locationManager setPausesLocationUpdatesAutomatically:NO];
     
-    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+//    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
 }
 #pragma mark - Add Regions
 - (void)getCurrentLocation
@@ -260,41 +263,63 @@
 }
 #pragma mark - AMapLocationManagerDelegate 
 //地理围栏的相关回调
-- (void)amapLocationManager:(AMapLocationManager *)manager didFailWithError:(NSError *)error
-{
-    NSLog(@"~~~locationError:{%ld;%@}", (long)error.code, error.localizedDescription);
-}
-
-- (void)amapLocationManager:(AMapLocationManager *)manager didStartMonitoringForRegion:(AMapLocationRegion *)region
-{
-    NSLog(@"didStartMonitoringForRegion:%@", region);
-}
-
-- (void)amapLocationManager:(AMapLocationManager *)manager monitoringDidFailForRegion:(AMapLocationRegion *)region withError:(NSError *)error
-{
-    NSLog(@"monitoringDidFailForRegion:%@", error.localizedDescription);
-}
-
-- (void)amapLocationManager:(AMapLocationManager *)manager didEnterRegion:(AMapLocationRegion *)region
-{
-    NSLog(@"didEnterRegion:%@", region);
-}
-
-- (void)amapLocationManager:(AMapLocationManager *)manager didExitRegion:(AMapLocationRegion *)region
-{
-    NSLog(@"didExitRegion:%@", region);
-}
-
-- (void)amapLocationManager:(AMapLocationManager *)manager didDetermineState:(AMapLocationRegionState)state forRegion:(AMapLocationRegion *)region
-{
-    NSLog(@"didDetermineState:%@; state:%ld", region, (long)state);
-}
+//
+//- (void)amapLocationManager:(AMapLocationManager *)manager didStartMonitoringForRegion:(AMapLocationRegion *)region
+//{
+//    NSLog(@"didStartMonitoringForRegion:%@", region);
+//}
+//
+//- (void)amapLocationManager:(AMapLocationManager *)manager monitoringDidFailForRegion:(AMapLocationRegion *)region withError:(NSError *)error
+//{
+//    NSLog(@"monitoringDidFailForRegion:%@", error.localizedDescription);
+//}
+//
+//- (void)amapLocationManager:(AMapLocationManager *)manager didEnterRegion:(AMapLocationRegion *)region
+//{
+//    NSLog(@"didEnterRegion:%@", region);
+//}
+//
+//- (void)amapLocationManager:(AMapLocationManager *)manager didExitRegion:(AMapLocationRegion *)region
+//{
+//    NSLog(@"didExitRegion:%@", region);
+//}
+//
+//- (void)amapLocationManager:(AMapLocationManager *)manager didDetermineState:(AMapLocationRegionState)state forRegion:(AMapLocationRegion *)region
+//{
+//    NSLog(@"didDetermineState:%@; state:%ld", region, (long)state);
+//}
 
 #pragma mark - SDCycleScrollViewDelegate
 /** 点击图片回调 */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     [self.cycleScrollView removeFromSuperview];
 }
+
+
+
+- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location
+{
+    //定位结果
+    [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        if (placemarks.count == 0 || error) {
+            NSLog(@"反编码失败");
+        }else{//编码成功
+            CLPlacemark *placemark =  [placemarks firstObject];
+            NSLog(@"~~~~~%@",placemark.addressDictionary);
+            NSString *userLocation =  [placemark.name substringFromIndex:2];
+            self.locationView.userLocation.text =[NSString stringWithFormat:@"%@" ,userLocation];
+            [self.locationManager stopUpdatingLocation];
+        }
+    }];
+
+}
+
+- (void)amapLocationManager:(AMapLocationManager *)manager didFailWithError:(NSError *)error
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"定位失败" message:@"请打开定位，确定当前位置是否在派送范围" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+    [alertView show];
+}
+
 
 
 @end
