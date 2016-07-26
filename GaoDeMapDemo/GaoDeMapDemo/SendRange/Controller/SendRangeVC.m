@@ -81,6 +81,8 @@
     [self configLocationManager];
     //用户位置Label
     [self addUserLocationLabel];
+    //根据商店经纬度添加圆
+    [self addCircleReionForCoordinate:self.shopLocation];
     
 }
 
@@ -94,11 +96,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    //获得当前位置
+    //开始定位
 //    [self getCurrentLocation];
-    [self.locationManager startUpdatingLocation];
-    //根据商店经纬度添加圆
-    [self addCircleReionForCoordinate:self.shopLocation];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -162,30 +162,33 @@
     [self.locationManager setPausesLocationUpdatesAutomatically:NO];
     
 //    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+    
+    [self.locationManager startUpdatingLocation];
+
 }
 #pragma mark - Add Regions
-- (void)getCurrentLocation
-{
-    __weak typeof(self) weakSelf = self;
-    [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //回调或者说是通知主线程刷新，
-            //反地理编码
-            [weakSelf.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-                if (placemarks.count == 0 || error) {
-                     NSLog(@"没有定位到");
-                }else{//编码成功
-                CLPlacemark *placemark =  [placemarks firstObject];
-                    NSLog(@"~~~~~%@",placemark.addressDictionary);
-
-                NSString *userLocation =  [placemark.name substringFromIndex:2];
-                weakSelf.locationView.userLocation.text =[NSString stringWithFormat:@"%@" ,userLocation];
-                }
-            }];
-        });
-    }];
-    
-}
+//- (void)getCurrentLocation
+//{
+//    __weak typeof(self) weakSelf = self;
+//    [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            //回调或者说是通知主线程刷新，
+//            //反地理编码
+//            [weakSelf.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+//                if (placemarks.count == 0 || error) {
+//                     NSLog(@"没有定位到");
+//                }else{//编码成功
+//                CLPlacemark *placemark =  [placemarks firstObject];
+//                    NSLog(@"~~~~~%@",placemark.addressDictionary);
+//
+//                NSString *userLocation =  [placemark.name substringFromIndex:2];
+//                weakSelf.locationView.userLocation.text =[NSString stringWithFormat:@"%@" ,userLocation];
+//                }
+//            }];
+//        });
+//    }];
+//    
+//}
 //根据商店经纬度添加圆
 - (void)addCircleReionForCoordinate:(CLLocationCoordinate2D)coordinate
 {
