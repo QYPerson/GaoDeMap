@@ -23,9 +23,10 @@
 #import "Catagory.h"
 #import <AMapLocationKit/AMapLocationKit.h>
 #import "UserLocation.h"
+#import "ChooseAddressVC.h"
 
 //遵循 MAMapViewDelegate AMapLocationManagerDelegate 代理
-@interface SendRangeVC ()<MAMapViewDelegate,AMapLocationManagerDelegate,SDCycleScrollViewDelegate>
+@interface SendRangeVC ()<MAMapViewDelegate,SDCycleScrollViewDelegate>
 //点标注数据
 @property (nonatomic,strong) MAPointAnnotation *pointAnnotation;
 //商店坐标
@@ -38,7 +39,7 @@
 @property(nonatomic,strong)CLGeocoder *geocoder;
 //轮播图
 @property (nonatomic,weak) SDCycleScrollView *cycleScrollView;
-
+//用户位置
 @property (nonatomic,strong) UserLocation *userLoaction ;
 
 @end
@@ -156,8 +157,7 @@
     self.locationView = locationView;
     __weak typeof(self) weakSelf = self;
     locationView.ModifyAdrBtnClick = ^{
-//        weakSelf.navigationController pushViewController:<#(nonnull UIViewController *)#> animated:<#(BOOL)#>
-        
+        [weakSelf.navigationController pushViewController:[[ChooseAddressVC alloc] init] animated:YES];
     };
     [self.view addSubview:locationView];
 
