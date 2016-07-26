@@ -19,6 +19,7 @@
 		C88DC7F11D45DE5800AE7562 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C88DC7E81D45DE5800AE7562 /* AppDelegate.m */; };
 		C88DC7F31D45DE5800AE7562 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C88DC7EA1D45DE5800AE7562 /* main.m */; };
 		C88DC7F71D45DEF500AE7562 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C88DC7F61D45DEF500AE7562 /* Info.plist */; };
+		C89C0EA61D473344001AF754 /* UserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C89C0EA51D473344001AF754 /* UserLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		C88DC7E81D45DE5800AE7562 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C88DC7EA1D45DE5800AE7562 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Others/main.m; sourceTree = "<group>"; };
 		C88DC7F61D45DEF500AE7562 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C89C0EA41D473344001AF754 /* UserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLocation.h; sourceTree = "<group>"; };
+		C89C0EA51D473344001AF754 /* UserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLocation.m; sourceTree = "<group>"; };
 		D64D02FC0500B27D810ACEAF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +128,7 @@
 		C85B0B161D41BCFA00ECA594 /* GaoDeMapDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C89C0EA31D473287001AF754 /* Tool */,
 				C88DC7E61D45DE5800AE7562 /* Others */,
 				C878C7711D46644500DF946D /* SendRange */,
 				C878C7831D46657C00DF946D /* ChooseAddress */,
@@ -248,6 +252,15 @@
 				C878C7811D4664CA00DF946D /* MainNavVC.m */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		C89C0EA31D473287001AF754 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				C89C0EA41D473344001AF754 /* UserLocation.h */,
+				C89C0EA51D473344001AF754 /* UserLocation.m */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 		CFEC34EF53CDDCB2353A01F3 /* Pods */ = {
@@ -450,6 +463,7 @@
 			files = (
 				C878C77D1D46644500DF946D /* SendRangeVC.m in Sources */,
 				C88DC7F31D45DE5800AE7562 /* main.m in Sources */,
+				C89C0EA61D473344001AF754 /* UserLocation.m in Sources */,
 				C878C7891D4665DD00DF946D /* ChooseAddressVC.m in Sources */,
 				C878C7821D4664CA00DF946D /* MainNavVC.m in Sources */,
 				C878C77E1D46644500DF946D /* CurrentLocationView.m in Sources */,
@@ -582,6 +596,10 @@
 				);
 				INFOPLIST_FILE = GaoDeMapDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = zibin.GaoDeMapDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -598,6 +616,10 @@
 				);
 				INFOPLIST_FILE = GaoDeMapDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = zibin.GaoDeMapDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

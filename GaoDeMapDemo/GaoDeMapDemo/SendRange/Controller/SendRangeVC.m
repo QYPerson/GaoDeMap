@@ -22,6 +22,7 @@
 #import "SDCycleScrollView.h"
 #import "Catagory.h"
 #import <AMapLocationKit/AMapLocationKit.h>
+#import "UserLocation.h"
 
 //遵循 MAMapViewDelegate AMapLocationManagerDelegate 代理
 @interface SendRangeVC ()<MAMapViewDelegate,AMapLocationManagerDelegate,SDCycleScrollViewDelegate>
@@ -37,6 +38,8 @@
 @property(nonatomic,strong)CLGeocoder *geocoder;
 //轮播图
 @property (nonatomic,weak) SDCycleScrollView *cycleScrollView;
+
+@property (nonatomic,strong) UserLocation *userLoaction ;
 
 @end
 
@@ -73,14 +76,13 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     //初始化地图
     [self initMapView];
-    //标记数据
+    //气泡数据
     [self setPointAnnotation];
-    //配置位置管理者
-    [self configLocationManager];
     //用户位置Label
     [self addUserLocationLabel];
     //根据商店经纬度添加覆盖物
     [self addCircleReionForCoordinate:self.shopLocation];
+    
     
 }
 
@@ -91,7 +93,26 @@
     self.navigationController.toolbarHidden         = YES;
 }
 
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    //1.创建用户位置管理者
+    UserLocation *userLoaction = [UserLocation sharedUserLocationManager];
+    
+    //2.强引用 防止销毁
+    self.userLoaction = userLoaction;
+    
+    //3.获取用户当前位置
+    [self.userLoaction getUserLocationSuccess:^(NSString *userAddress) {
+        //userAddress 用户地址
+        self.locationView.userLocation.text =[NSString stringWithFormat:@"%@" ,userAddress];
+    } faild:^(NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"定位失败" message:@"请打开定位，确定当前位置是否在派送范围" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alertView show];
+    }];
+    
+    
+}
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -116,7 +137,7 @@
     }
 }
 
-//标记数据
+//设置气泡数据
 -(void)setPointAnnotation{
 
     MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
@@ -128,34 +149,19 @@
     
 }
 
-//用户位置
+//添加用户位置视图
 -(void)addUserLocationLabel{
     CurrentLocationView *locationView = [[[NSBundle mainBundle] loadNibNamed:@"CurrentLocationView" owner:nil options:nil] lastObject];
     locationView.frame  = CGRectMake(0, 60, SCREEN_WIDTH, 80);
     self.locationView = locationView;
     __weak typeof(self) weakSelf = self;
     locationView.ModifyAdrBtnClick = ^{
-    
 //        weakSelf.navigationController pushViewController:<#(nonnull UIViewController *)#> animated:<#(BOOL)#>
         
     };
     [self.view addSubview:locationView];
 
 }
-- (void)configLocationManager
-{
-    self.locationManager = [[AMapLocationManager alloc] init];
-    
-    [self.locationManager setDelegate:self];
-    
-    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
-    
-    [self.locationManager setPausesLocationUpdatesAutomatically:NO];
-    
-    [self.locationManager startUpdatingLocation];
-
-}
-#pragma mark - Add Regions
 //根据商店经纬度添加圆
 - (void)addCircleReionForCoordinate:(CLLocationCoordinate2D)coordinate
 {
@@ -231,36 +237,12 @@
     [self.view addSubview:cycleScrollView];
     
 }
-
-#pragma mark - AMapLocationManagerDelegate
-//定位成功 停止定位
-- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location
-{
-    //定位结果
-    [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-        if (placemarks.count == 0 || error) {
-            NSLog(@"反编码失败");
-        }else{//编码成功
-            CLPlacemark *placemark =  [placemarks firstObject];
-            NSLog(@"~~~~~%@",placemark.addressDictionary);
-            NSString *userLocation =  [placemark.name substringFromIndex:2];
-            self.locationView.userLocation.text =[NSString stringWithFormat:@"%@" ,userLocation];
-            [self.locationManager stopUpdatingLocation];
-        }
-    }];
-
-}
-//定位失败
-- (void)amapLocationManager:(AMapLocationManager *)manager didFailWithError:(NSError *)error
-{
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"定位失败" message:@"请打开定位，确定当前位置是否在派送范围" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-    [alertView show];
-}
 #pragma mark - SDCycleScrollViewDelegate
 //点击轮播图
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     [self.cycleScrollView removeFromSuperview];
 }
+
 
 
 

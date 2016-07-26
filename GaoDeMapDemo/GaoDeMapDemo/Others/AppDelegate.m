@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //4.配置key
-    [MAMapServices sharedServices].apiKey = @"5e6235b9fae719747e2f4001c01bfdea";
+    [MAMapServices sharedServices].apiKey = @"ef9d54d2207ef4beee8b5b8f73f393c9";
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[MainNavVC alloc] initWithRootViewController:    [[SendRangeVC alloc ] init]];
     [self.window makeKeyAndVisible];
