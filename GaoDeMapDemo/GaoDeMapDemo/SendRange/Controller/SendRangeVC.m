@@ -132,7 +132,6 @@
     {
         self.mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 140, SCREEN_WIDTH, SCREEN_HEIGHT-80)];
         [self.mapView setDelegate:self];
-        self.mapView.showsUserLocation = YES;
         self.mapView.showsScale = NO;
         [self.view addSubview:self.mapView];
     }

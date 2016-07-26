@@ -73,7 +73,9 @@
         }else{//编码成功
             CLPlacemark *placemark =  [placemarks firstObject];
             NSLog(@"~~~~~%@",placemark.addressDictionary);
-            NSString *userLocation =  [placemark.name substringFromIndex:2];
+            NSDictionary *tmpDic = placemark.addressDictionary;
+            NSString *userLocation = tmpDic[@"FormattedAddressLines"][0];
+            userLocation = [userLocation substringFromIndex:2];
             self.userAddressBlock(userLocation);
             //停止定位
             [self.locationManager stopUpdatingLocation];
