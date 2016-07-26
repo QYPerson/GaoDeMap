@@ -173,6 +173,8 @@
                      NSLog(@"没有定位到");
                 }else{//编码成功
                 CLPlacemark *placemark =  [placemarks firstObject];
+                    NSLog(@"~~~~~%@",placemark.addressDictionary);
+
                 NSString *userLocation =  [placemark.name substringFromIndex:2];
                 weakSelf.locationView.userLocation.text =[NSString stringWithFormat:@"%@" ,userLocation];
                 }
