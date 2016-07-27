@@ -54,11 +54,14 @@
 
 -(void)getUserLocationSuccess:(void (^)(NSString *userAddress))userAddress faild:(void (^)(NSError *))error{
     [self.locationManager startUpdatingLocation];
-    AMapLocationCircleRegion *cirRegion300 = [[AMapLocationCircleRegion alloc] initWithCenter:CLLocationCoordinate2DMake(30.2482103207, 120.0590317867) radius:300 identifier:@"circleRegion300"];
-    [self.locationManager startMonitoringForRegion:cirRegion300];
-//    self.userAddressBlock = ^(NSString *userAdd){
-//        userAddress(userAdd);
-//    };
+    
+    //对block赋值
+    self.userAddressBlock = ^(CLPlacemark *placemark){
+        NSDictionary *tmpDic = placemark.addressDictionary;
+        NSString *userLocation = tmpDic[@"FormattedAddressLines"][0];
+        userLocation = [userLocation substringFromIndex:2];
+        userAddress(userLocation);
+    };
     self.ErrorBlock = ^(NSError *err){
         error(err);
     };
