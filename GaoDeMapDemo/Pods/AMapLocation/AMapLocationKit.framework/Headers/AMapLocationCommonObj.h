@@ -42,6 +42,7 @@ typedef NS_ENUM(NSInteger, AMapLocationRegionState)
 
 @property (nonatomic, copy) NSString *formattedAddress;//!< 格式化地址
 
+@property (nonatomic, copy) NSString *country; //!< 国家
 @property (nonatomic, copy) NSString *province; //!< 省/直辖市
 @property (nonatomic, copy) NSString *city;     //!< 市
 @property (nonatomic, copy) NSString *district; //!< 区
@@ -53,6 +54,10 @@ typedef NS_ENUM(NSInteger, AMapLocationRegionState)
 
 @property (nonatomic, copy) NSString *street;   //!< 街道名称
 @property (nonatomic, copy) NSString *number;   //!< 门牌号
+
+@property (nonatomic, copy) NSString *POIName; //!< 兴趣点名称
+@property (nonatomic, copy) NSString *AOIName; //!< 所属兴趣点名称
+
 
 @end
 
@@ -77,3 +82,10 @@ typedef NS_ENUM(NSUInteger, AMapLocationCoordinateType)
  */
 FOUNDATION_EXTERN CLLocationCoordinate2D AMapLocationCoordinateConvert(CLLocationCoordinate2D coordinate, AMapLocationCoordinateType type);
 
+/**
+ *  判断目标经纬度是否在大陆以及港、澳地区。输入参数为高德坐标系。
+ *
+ *  @param coordinate 待判断的目标经纬度
+ *  @return 是否在大陆以及港、澳地区
+ */
+FOUNDATION_EXTERN BOOL AMapLocationDataAvailableForCoordinate(CLLocationCoordinate2D coordinate);

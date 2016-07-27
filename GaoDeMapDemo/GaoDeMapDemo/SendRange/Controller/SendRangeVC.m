@@ -99,20 +99,23 @@
     
     //1.创建用户位置管理者
     UserLocation *userLoaction = [UserLocation sharedUserLocationManager];
-    
     //2.强引用 防止销毁
     self.userLoaction = userLoaction;
-    
     //3.获取用户当前位置
-    [self.userLoaction getUserLocationSuccess:^(NSString *userAddress) {
-        //userAddress 用户地址
+    [self.userLoaction getUserLocationWithShopLocation:CLLocationCoordinate2DMake(LATITUD, LONGITUDE) Success:^(NSString *userAddress, BOOL isInTheRegino) {
+        
         self.locationView.userLocation.text =[NSString stringWithFormat:@"%@" ,userAddress];
+        
+        if (isInTheRegino) {
+            self.locationView.sendRange.textColor = [UIColor blackColor];            self.locationView.sendRange.text = [NSString stringWithFormat:@"可由鲜在时杭州西溪园店配送"];
+        }else{
+            self.locationView.sendRange.textColor = [UIColor colorWithRed:235/255.0 green:56/255.0 blue:35/255.0 alpha:1];
+            self.locationView.sendRange.text = [NSString stringWithFormat:@"您当前的位置不在派送范围内，请修改配送地址!"];
+        }
     } faild:^(NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"定位失败" message:@"请打开定位，确定当前位置是否在派送范围" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alertView show];
     }];
-    
-    
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -243,6 +246,21 @@
 }
 
 
+- (void)amapLocationManager:(AMapLocationManager *)manager didEnterRegion:(AMapLocationRegion *)region{
+    NSLog(@"%@",@"123");
+
+}
+
+/**
+ *  离开region回调函数
+ *
+ *  @param manager 定位 AMapLocationManager 类。
+ *  @param region 离开的region。
+ */
+- (void)amapLocationManager:(AMapLocationManager *)manager didExitRegion:(AMapLocationRegion *)region{
+    NSLog(@"%@",@"456");
+
+}
 
 
 @end

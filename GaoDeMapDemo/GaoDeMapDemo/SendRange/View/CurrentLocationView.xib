@@ -30,12 +30,12 @@
                     <color key="textColor" red="0.42745098039215684" green="0.68235294117647061" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可由鲜在时杭州西溪园店配送" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3N5-XR-IfN">
-                    <rect key="frame" x="8" y="49" width="221" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3N5-XR-IfN">
+                    <rect key="frame" x="8" y="49" width="0.0" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="DSR-JN-GRc"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -73,6 +73,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="sendRange" destination="3N5-XR-IfN" id="sf0-PO-hlG"/>
                 <outlet property="userLocation" destination="EDE-1x-I6E" id="PAe-ls-4Vp"/>
             </connections>
             <point key="canvasLocation" x="99.5" y="1"/>

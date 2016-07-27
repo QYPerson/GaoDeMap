@@ -1,24 +1,29 @@
 PODS:
-  - AMap2DMap (3.3.0)
-  - AMapLocation (1.1.1)
-  - AMapSearch (3.2.0)
-  - SDCycleScrollView (1.61):
+  - AMap2DMap (4.1.1):
+    - AMapFoundation (~> 1.1)
+  - AMapFoundation (1.1.0)
+  - AMapLocation (2.1.0):
+    - AMapFoundation (~> 1.1)
+  - AMapSearch (4.1.0):
+    - AMapFoundation (~> 1.0)
+  - SDCycleScrollView (1.65):
     - SDWebImage (~> 3.7)
-  - SDWebImage (3.7.5):
-    - SDWebImage/Core (= 3.7.5)
-  - SDWebImage/Core (3.7.5)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
 
 DEPENDENCIES:
-  - AMap2DMap
-  - AMapLocation
-  - AMapSearch
-  - SDCycleScrollView
+  - AMap2DMap (= 4.1.1)
+  - AMapLocation (= 2.1.0)
+  - AMapSearch (= 4.1.0)
+  - SDCycleScrollView (= 1.65)
 
 SPEC CHECKSUMS:
-  AMap2DMap: e53461cdc345375e514579db17dbd721ff9ed9eb
-  AMapLocation: fc0245146ef90811f9590d428e9035a2a64f4526
-  AMapSearch: a885f0702578a441a22cb66fa74f8918c6d19e6f
-  SDCycleScrollView: a002d85b30cfa9d0ac74069cd3973ca19ff4f22f
-  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  AMap2DMap: e69e7a598718bef0addeea41240646f5a045c41c
+  AMapFoundation: 15db20567e6512422a086a01b42a88b145bc2500
+  AMapLocation: 343abc9ccd971ad27e459f38b5b082eabebf8792
+  AMapSearch: cb4722480d2d4331a032d43bd1070ed0fa55dac9
+  SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
 COCOAPODS: 0.39.0

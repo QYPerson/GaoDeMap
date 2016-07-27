@@ -12,6 +12,8 @@
 @interface CurrentLocationView : UIView
 //用户位置
 @property (weak, nonatomic) IBOutlet UILabel *userLocation;
+//改变派送范围的文字
+@property (weak, nonatomic) IBOutlet UILabel *sendRange;
 //点击修改位置按钮调用
 @property (nonatomic,copy) void (^ModifyAdrBtnClick)();
 

@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "MAMapURLSearchType.h"
+#import "AMapURLSearchType.h"
 
 /// 导航配置信息
-@interface MANaviConfig : NSObject
+@interface AMapNaviConfig : NSObject
 
 /// 应用返回的Scheme
 @property (nonatomic, copy) NSString *appScheme;
@@ -23,14 +23,14 @@
 @property (nonatomic, assign) CLLocationCoordinate2D destination;
 
 /// 导航策略
-@property (nonatomic, assign) MADrivingStrategy strategy;
+@property (nonatomic, assign) AMapDrivingStrategy strategy;
 
 @end
 
 #pragma mark - 
 
 /// 路径搜索配置信息
-@interface MARouteConfig : NSObject
+@interface AMapRouteConfig : NSObject
 
 /// 应用返回的Scheme
 @property (nonatomic, copy) NSString *appScheme;
@@ -45,20 +45,20 @@
 @property (nonatomic, assign) CLLocationCoordinate2D destinationCoordinate;
 
 /// 驾车策略
-@property (nonatomic, assign) MADrivingStrategy drivingStrategy;
+@property (nonatomic, assign) AMapDrivingStrategy drivingStrategy;
 
 /// 公交策略
-@property (nonatomic, assign) MATransitStrategy transitStrategy;
+@property (nonatomic, assign) AMapTransitStrategy transitStrategy;
 
 /// 路径规划类型
-@property (nonatomic, assign) MARouteSearchType routeType;
+@property (nonatomic, assign) AMapRouteSearchType routeType;
 
 @end
 
 #pragma mark -
 
 /// POI搜索配置信息
-@interface MAPOIConfig : NSObject
+@interface AMapPOIConfig : NSObject
 
 /// 应用返回的Scheme
 @property (nonatomic, copy) NSString *appScheme;

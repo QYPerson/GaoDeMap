@@ -35,7 +35,7 @@ typedef NS_ENUM(NSInteger, AMapSearchLanguage)
 /**
  *  AMapSearch的初始化函数。
  *
- *  初始化之前请设置 AMapSearchServices 中的APIKey，否则将无法正常使用搜索服务.
+ *  初始化之前请正确设置key，否则将无法正常使用搜索服务.
  *  @return AMapSearch类对象实例
  */
 - (instancetype)init;

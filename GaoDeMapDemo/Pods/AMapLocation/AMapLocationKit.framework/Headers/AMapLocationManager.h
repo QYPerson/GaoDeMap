@@ -53,9 +53,19 @@ typedef void (^AMapLocatingCompletionBlock)(CLLocation *location, AMapLocationRe
 /**
  *  是否允许后台定位。默认为NO。只在iOS 9.0及之后起作用。
  *
- *  设置为YES的时候必须保证 Background Modes 中的 Location updates 处于选中状态，否则会抛出常。
+ *  设置为YES的时候必须保证 Background Modes 中的 Location updates 处于选中状态，否则会抛出异常。
  */
 @property(nonatomic, assign) BOOL allowsBackgroundLocationUpdates;
+
+/**
+ *  指定单次定位超时时间,默认为10s。最小值是2s。注意单次定位请求前设置。
+ */
+@property(nonatomic, assign) NSInteger locationTimeout;
+
+/**
+ *  指定单次定位逆地理超时时间,默认为5s。最小值是2s。注意单次定位请求前设置。
+ */
+@property(nonatomic, assign) NSInteger reGeocodeTimeout;
 
 /**
  *  单次定位

@@ -26,4 +26,14 @@
  *  @param error       获取失败
  */
 -(void)getUserLocationSuccess:(void(^)(NSString *userAddress))userAddress faild:(void(^)(NSError *error))error;
+/**
+ *  获取用户位置 并且判断是否在圆内
+ *
+ *  @param shopLocation 商店坐标
+ *  @param userAddress  用户位置
+ *  @param isInTheRegino 判断是否在派送范围内
+ *  @param error        获取错误的返回信息
+ */
+
+-(void)getUserLocationWithShopLocation:(CLLocationCoordinate2D )shopLocation Success:(void(^)(NSString *userAddress,BOOL isInTheRegino))userAddress faild:(void(^)(NSError *error))error;
 @end

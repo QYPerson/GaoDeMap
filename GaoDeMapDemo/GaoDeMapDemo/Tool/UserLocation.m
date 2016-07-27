@@ -8,6 +8,7 @@
 
 #import "UserLocation.h"
 #import <AMapLocationKit/AMapLocationKit.h>
+#import <MAMapKit/MAMapKit.h>
 @interface UserLocation () <AMapLocationManagerDelegate>
 //位置管理者
 @property (nonatomic, strong) AMapLocationManager *locationManager;
@@ -16,7 +17,7 @@
 //地址
 @property (nonatomic,strong) NSString *userAddress;
 //地址Block
-@property (nonatomic,copy) void (^userAddressBlock)(NSString *userAddr);
+@property (nonatomic,copy) void (^userAddressBlock)(CLPlacemark *placeMark);
 //获取位置失败
 @property (nonatomic,copy) void(^ErrorBlock)(NSError *error);
 @end
@@ -53,14 +54,30 @@
 
 -(void)getUserLocationSuccess:(void (^)(NSString *userAddress))userAddress faild:(void (^)(NSError *))error{
     [self.locationManager startUpdatingLocation];
-    self.userAddressBlock = ^(NSString *userAdd){
-        userAddress(userAdd);
+    AMapLocationCircleRegion *cirRegion300 = [[AMapLocationCircleRegion alloc] initWithCenter:CLLocationCoordinate2DMake(30.2482103207, 120.0590317867) radius:300 identifier:@"circleRegion300"];
+    [self.locationManager startMonitoringForRegion:cirRegion300];
+//    self.userAddressBlock = ^(NSString *userAdd){
+//        userAddress(userAdd);
+//    };
+    self.ErrorBlock = ^(NSError *err){
+        error(err);
+    };
+}
+-(void)getUserLocationWithShopLocation:(CLLocationCoordinate2D )shopLocation Success:(void(^)(NSString *userAddress,BOOL isInTheRegino))userAddress faild:(void(^)(NSError *error))error{
+    [self.locationManager startUpdatingLocation];
+    //对block赋值
+    self.userAddressBlock = ^(CLPlacemark *placemark){
+        NSDictionary *tmpDic = placemark.addressDictionary;
+        NSString *userLocation = tmpDic[@"FormattedAddressLines"][0];
+        userLocation = [userLocation substringFromIndex:2];
+        //判断商店坐标是否在圆内
+        BOOL isContains = MACircleContainsCoordinate(placemark.location.coordinate, shopLocation, 200);
+        userAddress(userLocation,isContains);
     };
     self.ErrorBlock = ^(NSError *err){
         error(err);
     };
 }
-
 
 #pragma mark - AMapLocationManagerDelegate
 //定位成功
@@ -72,11 +89,8 @@
             NSLog(@"反编码失败");
         }else{//编码成功
             CLPlacemark *placemark =  [placemarks firstObject];
-            NSLog(@"~~~~~%@",placemark.addressDictionary);
-            NSDictionary *tmpDic = placemark.addressDictionary;
-            NSString *userLocation = tmpDic[@"FormattedAddressLines"][0];
-            userLocation = [userLocation substringFromIndex:2];
-            self.userAddressBlock(userLocation);
+//            CLLocationCoordinate2D location2D =  placemark.location.coordinate;
+            self.userAddressBlock(placemark);
             //停止定位
             [self.locationManager stopUpdatingLocation];
         }
@@ -88,6 +102,7 @@
 {
     self.ErrorBlock(error);
 }
+
 
 @end
 

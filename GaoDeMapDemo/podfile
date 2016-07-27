@@ -1,6 +1,5 @@
-platform :ios, '7.0' #手机的系统
-pod 'AMap2DMap' #2D地图SDK (2D和3D不能同时使⽤用)
-pod 'AMapSearch' #搜索服务SDK
-pod 'AMapLocation'
-pod 'SDCycleScrollView'
-
+platform :ios, '7.0'
+pod 'AMap2DMap','4.1.1'
+pod 'AMapSearch','4.1.0'
+pod 'AMapLocation','2.1.0'
+pod 'SDCycleScrollView','1.65'
