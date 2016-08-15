@@ -96,7 +96,6 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
     //1.创建用户位置管理者
     UserLocation *userLoaction = [UserLocation sharedUserLocationManager];
     //2.强引用 防止销毁
@@ -107,7 +106,8 @@
         self.locationView.userLocation.text =[NSString stringWithFormat:@"%@" ,userAddress];
         
         if (isInTheRegino) {
-            self.locationView.sendRange.textColor = [UIColor blackColor];            self.locationView.sendRange.text = [NSString stringWithFormat:@"可由鲜在时杭州西溪园店配送"];
+            self.locationView.sendRange.textColor = [UIColor blackColor];
+            self.locationView.sendRange.text = [NSString stringWithFormat:@"可由鲜在时杭州西溪园店配送"];
         }else{
             self.locationView.sendRange.textColor = [UIColor colorWithRed:235/255.0 green:56/255.0 blue:35/255.0 alpha:1];
             self.locationView.sendRange.text = [NSString stringWithFormat:@"您当前的位置不在派送范围内，请修改配送地址!"];
@@ -176,8 +176,15 @@
     //添加Overlay
     MACircle *circle300 = [MACircle circleWithCenterCoordinate:coordinate radius:RADIUS];
     [self.mapView addOverlay:circle300];
+    
+
+    
     //设置地图显示范围
     [self.mapView setVisibleMapRect:circle300.boundingMapRect];
+    
+    //改变地图中心点
+    self.mapView.centerCoordinate = coordinate;
+
 }
 
 
@@ -188,15 +195,13 @@
     if ([annotation isKindOfClass:[MAPointAnnotation class]])
     {
         static NSString *pointReuseIndentifier = @"pointReuseIndentifier";
-        MAPinAnnotationView *annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndentifier];
+        MAAnnotationView *annotationView = (MAAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndentifier];
         if (annotationView == nil)
         {
-            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndentifier];
+            annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndentifier];
         }
         annotationView.canShowCallout= YES;       //设置气泡可以弹出，默认为NO
-        annotationView.animatesDrop = YES;        //设置标注动画显示，默认为NO
-        annotationView.draggable = YES;        //设置标注可以拖动，默认为NO
-        annotationView.pinColor = MAPinAnnotationColorPurple;
+        annotationView.image = [UIImage imageNamed:@"dizhi"];
         return annotationView;
     }
     return nil;
